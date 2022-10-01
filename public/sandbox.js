@@ -1,14 +1,8 @@
-//any type
-var age;
-age = 25;
-age = true;
-age = 'hello';
-age = {
-    name: 'luigi'
+//functions
+var greet; //Can declare function type with capital F
+greet = function () {
+    console.log('hello, world');
 };
-console.log(age);
-var mixed = [];
-mixed.push('hello');
-mixed.push(1);
-mixed.push(true);
-console.log(mixed);
+var add = function (a, b) {
+    console.log(a + b);
+};
