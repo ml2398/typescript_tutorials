@@ -1,3 +1,26 @@
+//Interfaces
+//Interaces set out the structure of objects defined in the future as an inPerson type
+interface isPerson {
+    name: string;
+    age: number;
+    speak(a: string): void;
+    spend(a: number): number;
+};
+
+const me: isPerson = {
+    name: 'Max',
+    age: 30,
+    speak(text: string): void {
+        console.log(text);
+    },
+    spend(amount: number): number {
+        console.log('I spent', amount);
+        return amount;
+    }
+};
+
+import {invoice} from './invoice.js'//import the JS file not TS file
+
 //Interacting with DOM
 const anchor = document.querySelector('a')!;
 
@@ -37,7 +60,7 @@ form.addEventListener('submit', (e: Event) => {
 
 //Classes
 //Create a class to store the inputted payment data 
-class invoice {
+/*class invoice {
     //Access modifiers
     //By default, class properties and public
     readonly client: string;//Can't modify outside or inside class 
@@ -65,7 +88,7 @@ class invoice {
     format() {
         return `${this.client} owes $${this.amount} for ${this.details}`;
     };
-};
+};*/
 
 //Instantiate class and creat an object 
 const invOne = new invoice('mario', 'work on website', 250);

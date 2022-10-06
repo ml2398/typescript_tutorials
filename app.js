@@ -1,3 +1,19 @@
+"use strict";
+exports.__esModule = true;
+;
+var me = {
+    name: 'Max',
+    age: 30,
+    speak: function (text) {
+        console.log(text);
+    },
+    spend: function (amount) {
+        console.log('I spent', amount);
+        return amount;
+    }
+};
+console.log(me);
+var invoice_js_1 = require("./invoice.js"); //import the JS file not TS file
 //Interacting with DOM
 var anchor = document.querySelector('a');
 //check if dom element exists without TS
@@ -25,14 +41,21 @@ form.addEventListener('submit', function (e) {
 });
 //Classes
 //Create a class to store the inputted payment data 
-var invoice = /** @class */ (function () {
+/*class invoice {
+    //Access modifiers
+    //By default, class properties and public
+    readonly client: string;//Can't modify outside or inside class
+    private details: string;//Can't be accessed outside class
+    public amount: number;
+
     //create an invoice object based on class template
-    function invoice(c, d, a) {
-        //this refers to the object instance created by the constructor 
+    constructor(c: string, d: string, a:number) {
+        //this refers to the object instance created by the constructor
         this.client = c;
         this.details = d;
         this.amount = a;
     }
+
     //Can set type and create constructor all in one using the below code
     //Only works if access modifiers are given
     //When creating a new instace the values are assigned to the properties
@@ -41,17 +64,15 @@ var invoice = /** @class */ (function () {
     //     private details: string,
     //     public amount: number,
     // ) {};
+
     //Create a method for this class
-    invoice.prototype.format = function () {
-        return "".concat(this.client, " owes $").concat(this.amount, " for ").concat(this.details);
+    format() {
+        return `${this.client} owes $${this.amount} for ${this.details}`;
     };
-    ;
-    return invoice;
-}());
-;
+};*/
 //Instantiate class and creat an object 
-var invOne = new invoice('mario', 'work on website', 250);
-var invTwo = new invoice('luigi', 'work on website', 300);
+var invOne = new invoice_js_1.invoice('mario', 'work on website', 250);
+var invTwo = new invoice_js_1.invoice('luigi', 'work on website', 300);
 //create an array to store all invoices of type invoices only
 var invoices = [];
 invoices.push(invOne);
