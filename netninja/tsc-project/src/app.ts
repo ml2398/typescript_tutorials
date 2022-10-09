@@ -30,18 +30,22 @@ const list = new listTemplate(ul);
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault();//inbuit function to prevent default page refresh on submit
 
+    //create a tuple to pass in data into invoice/payment objects
+    let values: [string, string, number]; 
+    values = [tofrom.value, details.value, amount.valueAsNumber];
+
     //Check whether entered data is an invoice or payment and store the data in 
     //an object of class payment or invoice, both using the hasformatter interface structure
     let doc: hasFormatter;
     if (type.value === 'invoice') {
-        doc = new invoice(tofrom.value, details.value, amount.valueAsNumber)
+        doc = new invoice(...values);// spread operator passes in values one at a time
     } else {
-        doc = new payment(tofrom.value, details.value, amount.valueAsNumber)
+        doc = new payment(...values);
     };
 
     list.render(doc, type.value, 'end');
 
-    console.log(doc);
+    //console.log(doc);
 
     /*
     console.log(
@@ -52,6 +56,13 @@ form.addEventListener('submit', (e: Event) => {
     );
     */
 });
+
+
+
+
+
+
+
 
 
 

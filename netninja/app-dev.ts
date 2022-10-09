@@ -121,6 +121,70 @@ invoices.forEach(inv => {
 
 
 
+//Generics
+//Create reusable blocks of code that can be used with different types
+//<T> notation captures the type and the specifics of that type passed in eg objects and its properties
+//can extend notation using 'extends' keyword
+const addUID = <T extends {name: string}>(obj: T) => {
+    //Generate random num between 0 and 100
+    let uid = Math.floor(Math.random()*100);
+    return {...obj, uid}; //return original object destructured along with new uid
+}
+
+let docOne = addUID({name:'Dave', age: 40});
+
+console.log(docOne);//acceptable
+console.log(docOne.age);
+
+//Generics With Interface
+interface Resource<T> {
+    uid: number;
+    resourceName: string;
+    data: T;
+}
+
+
+const docThree: Resource<string[]> = {// pass in the type parameter <T>
+    uid:2,
+    resourceName: 'shoppinglist',
+    data: ['bread', 'milk']
+};
+
+//Enums
+//A way to specify indexes as keywords or constants
+//each keyword associated with a number starting with 0 
+//Can also customise number allocation (see academid tut)
+ enum resourceType {BOOK, AUTHOR, FILM, DIRECTOR, PERSON};
+
+ interface resourceCollection<T> {
+    uid: number;
+    resourceName: resourceType;
+    data: T;
+}
+
+ const docTwo: resourceCollection <object> = {
+    uid: 1,
+    resourceName: resourceType.BOOK,
+    data: {title: 'name of the wind'}
+ };
+
+ const docFour: resourceCollection <object> = {
+    uid: 1,
+    resourceName: resourceType.AUTHOR,
+    data: {title: 'name'}
+ };
+
+ //Tuple
+let arr = ['ryu', 25, true];
+arr[0] = false;
+arr[1] = 'hello';
+arr = [1,2,3];
+
+//types in a tuple are fixed and cannot be re-assinged
+//the types are defined before initialisation. 
+let tup: [string, number, boolean] = ['hello', 25, true];
+//tup[1] = 'hello'; //error
+
 
 
 
